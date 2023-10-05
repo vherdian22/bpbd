@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 100%;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logout {
+  width: 250px;
+  font-size: 15px;
+  color: white;
+  border: white 3px solid;
+  border-radius: 5px;
+  padding: 12px 20px;
+  margin-top: 300px;
+}
+
+.logout a {
+  width: 150px;
+  background-color: #ffa12c;
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  padding: 12px 20px;
+  margin-left: 20px;
+}
+
+.logout:hover a{
+  background-color:brown;
+  color: white;
+}
+
+
+.profile {
+    width: 50px;
+    height: 45%;
+    margin: 10px;
+    width: 250px; 
+}
+
+.user-pict {
+    width: 50px;
+    height: 45%;
+    float: left;
+    margin: 10px;
+}
+
+.user-set {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 205px;
+    top: 25px;
+}
+
+.user-set:hover {
+  transform: scale(1.5);
+}
+
+.info {
+  margin: 12px;
+  width: 170px;
+}
+
+.info h2{
+   font-size: 20px;
+}
+
+
+.sub-menu-set {
+  position: absolute;
+  margin-top: 15px;
+  background-color:#ffa12c;
+  width: 240px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sub-menu-set.open-menu{
+  max-height: 400px;
+}
+
+.sub-menu-set img {
+    width: 20px;
+    height: 20px;
+    left: 205px;
+    top: 25px;
+}
+
+.sub-menu-set a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  
+}
+
+.sub-menu-link p:hover {
+  font-weight: 600;
+}
+
+.sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.sub-menu-link img {
+ float: left;
+ margin-right: 10px;
+}
+
+hr {
+  border-top: 2px solid #ffa12c;
+  width: 250px;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+  }
+  
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #555;
+    color: white;
+  }
+
+
+
+
+
