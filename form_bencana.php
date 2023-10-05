@@ -288,7 +288,7 @@ $tampil = mysqli_fetch_assoc($data);
                             <input type="text" value="<?php echo $kecamatan; ?>" class="form-control" id="rt" name="rt"
                                     aria-describedby="emailHelp">
 
-                            <button type="submit" class="btn btn-secondary"><i class="bi bi-geo-alt-fill"></i></button>
+                            <button class="btn btn-secondary" onclick = "GetLocation()"><i class="bi bi-geo-alt-fill"></i></button>
                             
                             <div class="bg-light rounded h-100 mt-2">
                                 <iframe class="position-relative rounded w-100 h-200"
@@ -504,6 +504,30 @@ $tampil = mysqli_fetch_assoc($data);
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Javascript location -->
+    <script>
+        const x = document.getElementById("demo");
+
+        function GetLocation(){
+            try{
+
+                navigator.geolocation.getCurrentPosition(showposition);
+            
+            }
+                
+            catch{
+
+                x,innerHTML = err;
+
+            }             
+        }
+
+        function showposition (position){
+            x.innerHTML = position.coords.latitude + position.coords.longtitude; 
+        }
+
+    </script>                   
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
