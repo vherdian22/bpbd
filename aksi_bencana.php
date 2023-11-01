@@ -51,7 +51,7 @@ if(isset($_POST['aksi'])){
 
     $a=$connection->query($sql);
     if($a === true){
-        header('location: lihat_user.php');
+        header('location: laporan_bencana.php');
     }else{
         echo "erooooor";
     }

@@ -163,6 +163,104 @@ $tampil = mysqli_fetch_assoc($data);
             </nav>
             <!-- Navbar End -->
 
+            <?php
+            include 'connection.php';
+    
+            $a="SELECT * from lap_bencana";
+            $b = mysqli_query($connection , $a);
+            while($c=$b->fetch_array()){?>
+
+            
+            <!-- Grafik -->       
+                        
+                <div class="row">
+                    <div class="col-12">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+
+                <?php
+            }
+            ?>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script>
+                const ctx = document.getElementById('myChart');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                    labels: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='01'");
+                                echo mysqli_num_rows($january);
+                            ?>, 
+                            <?php 
+                                $february = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='02'");
+                                echo mysqli_num_rows($february);
+                            ?>, 
+                            <?php 
+                                $march = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='03'");
+                                echo mysqli_num_rows($march);
+                            ?>,
+                            <?php 
+                                $april = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='04'");
+                                echo mysqli_num_rows($april);
+                            ?>, 
+                            <?php 
+                                $may = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='05'");
+                                echo mysqli_num_rows($may);
+                            ?>,  
+                            <?php 
+                                $june = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='06'");
+                                echo mysqli_num_rows($june);
+                            ?>, 
+                            <?php 
+                                $july = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='07'");
+                                echo mysqli_num_rows($july);
+                            ?>,   
+                            <?php 
+                                $august = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='08'");
+                                echo mysqli_num_rows($august);
+                            ?>,  
+                            <?php 
+                                $september = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='09'");
+                                echo mysqli_num_rows($september);
+                            ?>, 
+                            <?php 
+                                $october = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='10'");
+                                echo mysqli_num_rows($october);
+                            ?>, 
+                            <?php 
+                                $novermber = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='11'");
+                                echo mysqli_num_rows($novermber);
+                            ?>,   
+                             <?php 
+                                $december = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='12'");
+                                echo mysqli_num_rows($december);
+                            ?>, 
+                            
+                        ],
+                        borderWidth: 1
+                    }]
+                    },
+                    options: {
+                    scales: {
+                        y: {
+                        beginAtZero: true
+                        }
+                    }
+                    }
+                });
+                </script>      
+
+            <!-- Grafik --> 
+            
+
+
             <!-- Footer Start -->
             <div class="container- pt-10 px-10">
                 <br>
@@ -173,18 +271,7 @@ $tampil = mysqli_fetch_assoc($data);
                 <br>
             </div> 
 
-            <div class="container ">
-                <div class="bg-light rounded-top p-2 ">
-                    <div class="row">
-                        <div class="text-center text-sm-start">
-                            <h1 class="text-warning mb-0 text-center">Hallo <?php echo $tampil['username']; ?>,</h1> 
-                            <h1 class="mb-0 text-center">Selamat Datang !!!</h1>
-                            
-                        </div>
-                    </div>
-                </div>
-                <img src="image/bpbd.png"  class="img-fluid p-5 mx-auto d-block" width="200px">
-            </div>
+            
             <!-- Footer End -->
         </div>
         <!-- Content End -->

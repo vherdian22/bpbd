@@ -279,15 +279,15 @@ $tampil = mysqli_fetch_assoc($data);
                                     aria-describedby="emailHelp">
                             </div>
                             <label for="dusun" class="form-label">Dusun</label>
-                            <input type="text" value="<?php echo $dusun; ?>" class="form-control" id="rt" name="rt"
+                            <input type="text" value="<?php echo $dusun; ?>" class="form-control" id="dusun" name="dusun"
                                     aria-describedby="emailHelp">
 
                             <label for="desa" class="form-label">Desa</label>
-                            <input type="text" value="<?php echo $desa; ?>" class="form-control" id="rt" name="rt"
+                            <input type="text" value="<?php echo $desa; ?>" class="form-control" id="desa" name="desa"
                                     aria-describedby="emailHelp">
 
                             <label for="kecamatan" class="form-label">Kecamatan</label>
-                            <input type="text" value="<?php echo $kecamatan; ?>" class="form-control" id="rt" name="rt"
+                            <input type="text" value="<?php echo $kecamatan; ?>" class="form-control" id="kecamatan" name="kecamatan"
                                     aria-describedby="emailHelp">
                             
                             
