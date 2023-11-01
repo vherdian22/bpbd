@@ -236,7 +236,9 @@ $tampil = mysqli_fetch_assoc($data);
 
     }
 ?>
-            
+
+                
+
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -287,9 +289,9 @@ $tampil = mysqli_fetch_assoc($data);
                             <label for="kecamatan" class="form-label">Kecamatan</label>
                             <input type="text" value="<?php echo $kecamatan; ?>" class="form-control" id="rt" name="rt"
                                     aria-describedby="emailHelp">
-
-                            <button class="btn btn-secondary" onclick = "GetLocation()"><i class="bi bi-geo-alt-fill"></i></button>
                             
+                            
+
                             <div class="bg-light rounded h-100 mt-2">
                                 <iframe class="position-relative rounded w-100 h-200"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
@@ -297,12 +299,16 @@ $tampil = mysqli_fetch_assoc($data);
                                 tabindex="0"></iframe>
                             </div>
 
+                            <div class="mb-3 form-check-inline" id="lokasi">
+                            <button class="btn btn-secondary" onclick ="GetLocation()"><i class="bi bi-geo-alt-fill"></i></button>                     
+                            </div>
+
                             <div class="mb-3 form-check-inline">
                                 <label for="longtitude" class="form-label">Longtitude</label>
                                 <input type="text" value="<?php echo $longtitude; ?>" class="form-control" id="longtitude" name="longtitude"
                                     aria-describedby="emailHelp">
                             </div>
-                            
+
                             <div class="mb-3 form-check-inline">
                                 <label for="latitude" class="form-label">Latitude</label>
                                 <input type="text" value="<?php echo $latitude; ?>" class="form-control" id="latitude" name="latitude"
@@ -495,7 +501,7 @@ $tampil = mysqli_fetch_assoc($data);
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
@@ -506,28 +512,7 @@ $tampil = mysqli_fetch_assoc($data);
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Javascript location -->
-    <script>
-        const x = document.getElementById("demo");
-
-        function GetLocation(){
-            try{
-
-                navigator.geolocation.getCurrentPosition(showposition);
-            
-            }
-                
-            catch{
-
-                x,innerHTML = err;
-
-            }             
-        }
-
-        function showposition (position){
-            x.innerHTML = position.coords.latitude + position.coords.longtitude; 
-        }
-
-    </script>                   
+                     
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

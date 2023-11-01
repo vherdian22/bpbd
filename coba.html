@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>HTML Geolocation</h1>
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+    <label for="longtitude" class="form-label">Longtitude</label>
+    <input type="text"  class="form-control" id="longtitude" name="longtitude"
+        aria-describedby="emailHelp">
+
+    <label for="latitude" class="form-label">Latitude</label>
+    <input type="text"  class="form-control" id="latitude" name="latitude"
+        aria-describedby="emailHelp">
+
+<!-- <p id="latitude"></p>
+<p id="longtitude"></p>  -->
+
+
+<script>
+const x = document.getElementById("latitude");
+const y = document.getElementById("longtitude");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+    y.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude;
+  y.innerHTML = "Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>
