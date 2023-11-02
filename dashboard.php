@@ -168,20 +168,35 @@ $tampil = mysqli_fetch_assoc($data);
     
             $a="SELECT * from lap_bencana";
             $b = mysqli_query($connection , $a);
-            while($c=$b->fetch_array()){?>
-
+            while($c=$b->fetch_array())
+ 
+            ?>
             
             <!-- Grafik -->       
-                        
-                <div class="row">
-                    <div class="col-12">
+            <div class="container-fluid pt-4 px-4"> 
+                <div class="row ms-5 mb-5">
+                    <div  class="col-sm-20 col-xl-10">
+                    <center>
+                    <h1 class="mb-4 ">Laporan Bencana 2023</h1>
+                     </center>
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
 
-                <?php
-            }
-            ?>
+                <div class="row ms-5 mb-5">
+                    <div  class="col-sm-20 col-xl-10">
+                    <center>
+                    <h1 class="mb-4 ">Jenis Bencana 2023</h1>
+                     </center>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- SCript mychart -->
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                 <script>
@@ -192,7 +207,7 @@ $tampil = mysqli_fetch_assoc($data);
                     data: {
                     labels: ["January","February","March","April","May","June","July","August","September","October","November","December"],
                     datasets: [{
-                        label: '# of Votes',
+                        label: 'Banyaknya kejadian',
                         data: [
                             <?php 
                                 $january = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='01'");
@@ -256,6 +271,12 @@ $tampil = mysqli_fetch_assoc($data);
                     }
                 });
                 </script>      
+                <!-- SCript mychart -->
+
+
+                <!-- SCript  -->
+
+
 
             <!-- Grafik --> 
             
