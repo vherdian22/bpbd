@@ -177,7 +177,7 @@ $tampil = mysqli_fetch_assoc($data);
                 <div class="row ms-5 mb-5">
                     <div  class="col-sm-20 col-xl-10">
                     <center>
-                    <h1 class="mb-4 ">Laporan Bencana 2023</h1>
+                    <h1 class="mb-4 ">Laporan Bencana</h1>
                      </center>
                         <canvas id="myChart"></canvas>
                     </div>
@@ -186,9 +186,18 @@ $tampil = mysqli_fetch_assoc($data);
                 <div class="row ms-5 mb-5">
                     <div  class="col-sm-20 col-xl-10">
                     <center>
-                    <h1 class="mb-4 ">Jenis Bencana 2023</h1>
+                    <h1 class="mb-4 ">Jenis Bencana</h1>
                      </center>
-                        <canvas id="myChart"></canvas>
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                </div>
+
+                <div class="row ms-5 mb-5">
+                    <div  class="col-sm-20 col-xl-10">
+                    <center>
+                    <h1 class="mb-4 ">Golongan Terdampak</h1>
+                     </center>
+                        <canvas id="pie"></canvas>
                     </div>
                 </div>
 
@@ -253,7 +262,7 @@ $tampil = mysqli_fetch_assoc($data);
                                 $novermber = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='11'");
                                 echo mysqli_num_rows($novermber);
                             ?>,   
-                             <?php 
+                            <?php 
                                 $december = mysqli_query($connection,"select * from lap_bencana where month(tanggal)='12'");
                                 echo mysqli_num_rows($december);
                             ?>, 
@@ -271,6 +280,111 @@ $tampil = mysqli_fetch_assoc($data);
                     }
                 });
                 </script>      
+
+
+                <script>
+                const chart = document.getElementById('myChart2');
+                new Chart(chart, {
+                    type: 'bar',
+                    data: {
+                    labels: ["Banjir Luapan","Banjir Bandang","Tanah longsor","Kebakaran","Pohon Tumbang","Angin Kencang","Tanah Ambles","Kebakaran Hutan","Gempa Bumi","Rumah Tersambar Petir"],
+                    datasets: [{
+                        label: 'Jumlah Bencana',
+                        data: [
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Banjir Luapan'");
+                                echo mysqli_num_rows($january);
+                            ?>, 
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Banjir Bandang'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Tanah Longsor'");
+                                echo mysqli_num_rows($january);
+                            ?>, 
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Kebakaran'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Pohon Tumbang'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Angin Kencang'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Tanah Ambles'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Kebakaran Hutan'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                            <?php 
+                                $january = mysqli_query($connection,"select * from lap_bencana where jenis_bencana ='Gempa Bumi'");
+                                echo mysqli_num_rows($january);
+                            ?>,
+                        ],
+                        borderWidth: 1
+                    }        
+                ]
+                    },
+                });
+                
+                </script> 
+
+            
+            <?php
+            include 'connection.php';
+    
+            $a="SELECT * from lap_bantuan";
+            $b = mysqli_query($connection , $a);
+            while($c=$b->fetch_array())
+ 
+            ?>              
+                <script>
+                const pie = document.getElementById('pie');
+                new Chart(pie, {
+                    type: 'pie',
+                    data: {
+                    labels: ["Balita","Dewasa","Ibu Hamil","Lansia","Disabilitas"],
+                    datasets: [{
+                        label: 'Usia Terdampak',
+                        data: [
+                            <?php 
+                                $balita = mysqli_query($connection,"select * from lap_bantuan where usia ='balita'");
+                                echo mysqli_num_rows($balita);
+                            ?>, 
+                            <?php 
+                                $dewasa = mysqli_query($connection,"select * from lap_bantuan where usia ='dewasa'");
+                                echo mysqli_num_rows($dewasa);
+                            ?>,
+                            <?php 
+                                $bumil = mysqli_query($connection,"select * from lap_bantuan where usia ='ibu hamil'");
+                                echo mysqli_num_rows($bumil);
+                            ?>, 
+                            <?php 
+                                $lansia = mysqli_query($connection,"select * from lap_bantuan where usia ='lansia'");
+                                echo mysqli_num_rows($lansia);
+                            ?>, 
+                            <?php 
+                                $disab = mysqli_query($connection,"select * from lap_bantuan where usia ='disabilitas'");
+                                echo mysqli_num_rows($disab);
+                            ?>,
+                        ],
+                        borderWidth: 1
+                    }        
+                ]
+                    },
+                });
+                
+                </script> 
+
+
+
                 <!-- SCript mychart -->
 
 

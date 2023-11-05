@@ -210,24 +210,39 @@ $tampil = mysqli_fetch_assoc($data);
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $nomor = 0;
                                         include "connection.php";
                                         
-                                            if (isset($_POST['bcari'])){
+                                        if (isset($_POST['bcari'])){
 
                                             $keyword = $_POST['cari'];
                                             $a = "SELECT * FROM lap_bencana WHERE tanggal like '%$keyword%' or alamat like '%$keyword%'
                                             order by id_bencana asc";
                                 
-                                            }else {
+                                        }else {
                                                 $a="SELECT * from lap_bencana order by id_bencana asc";
-                                            }
+                                        }
 
+                                            $batas = 5;
+                                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+                            
+                                            $data = mysqli_query($connection,"select * from lap_bencana");
+                                            $jumlah_data = mysqli_num_rows($data);
+                                            $total_halaman = ceil($jumlah_data / $batas);
+
+                                            $previous = $halaman - 1;
+                                            $next = $halaman + 1;
                                         
-                                        $b=$connection->query($a);
-                                        while($c=$b->fetch_array()){ $nomor++; ?>
+                                        
+                                        
+                                        $data_bencana = mysqli_query($connection,"select * from lap_bencana limit $halaman_awal, $batas");
+                                        $nomor = $halaman_awal+1;
+                                        
+                                        // $b=$connection->query($a);
+                                        while($c = mysqli_fetch_array($data_bencana)){  
+                                        ?>
                                         <tr>
-                                            <td><?php echo $nomor ?></td>
+                                            <td><?php echo $nomor++ ?></td>
                                             <td><?php echo $c['tanggal']; ?></td>
                                             <td><?php echo $c['waktu']; ?></td>
                                             <td><?php echo $c['alamat']; ?></td>
@@ -267,8 +282,6 @@ $tampil = mysqli_fetch_assoc($data);
                                             <a href="form_bencana.php?ubah=<?php echo $c['id_bencana'] ?>" type="button" class="btn btn-warning" >
                                             <i class="bi bi-pencil"></i>
                                             </a>
-
-                                            
                                             
                                             <?php 
                                                 if($_SESSION['level']== 'Admin'){
@@ -288,10 +301,28 @@ $tampil = mysqli_fetch_assoc($data);
                                         ?>
 
                                     </tbody>
-                                </table>                      
+                                </table>  
                             </div>
                         </div>
                     </div>
+
+                                            <nav>
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item">
+                                                        <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>>Previous</a>
+                                                    </li>
+                                                    <?php 
+                                                    for($x=1;$x<=$total_halaman;$x++){
+                                                        ?> 
+                                                        <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                                                        <?php
+                                                    }
+                                                    ?>				
+                                                    <li class="page-item">
+                                                        <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
 
                     <?php
                         if ($_SESSION['level'] == 'Admin'){

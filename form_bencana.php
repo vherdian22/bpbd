@@ -323,13 +323,12 @@ $tampil = mysqli_fetch_assoc($data);
                                 <option value="Banjir Luapan">Banjir Luapan</option>
                                 <option value="Tanah Ambles">Tanah Ambles</option>
                                 <option value="Angin Kencang">Angin Kencang</option>
-                                <option value="Karhutlah">Karhutlah</option>
+                                <option value="Kebakaran Hutan">Karhutlah</option>
                                 <option value="Banjir Bandang">Banjir Bandang</option>
-                                <option value="Tanah Gerak">Tanah Gerak</option>
+                                <option value="Gempa Bumi">Tanah Gerak</option>
                                 <option value="Pohon Tumbang">Pohon Tumbang</option>
                                 <option value="Kebakaran">Kebakaran</option>
                                 <option value="Rumah Tersambar Petir">Rumah Tersambar Petir</option>
-                                <option value="Atap Rumah Ambruk">Atap Rumah Ambruk</option>
                             </select>
                              
       
