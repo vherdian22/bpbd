@@ -340,11 +340,12 @@ $tampil = mysqli_fetch_assoc($data);
             <?php
             include 'connection.php';
     
-            $a="SELECT * from lap_bantuan";
+            $a="SELECT * from lap_penanganan";
             $b = mysqli_query($connection , $a);
             while($c=$b->fetch_array())
  
             ?>              
+                
                 <script>
                 const pie = document.getElementById('pie');
                 new Chart(pie, {
@@ -352,37 +353,36 @@ $tampil = mysqli_fetch_assoc($data);
                     data: {
                     labels: ["Balita","Dewasa","Ibu Hamil","Lansia","Disabilitas"],
                     datasets: [{
-                        label: 'Usia Terdampak',
+                        label: 'golongan',
                         data: [
                             <?php 
-                                $balita = mysqli_query($connection,"select * from lap_bantuan where usia ='balita'");
+                                $balita = mysqli_query($connection,"select sum(balita) as ba from lap_penanganan");
                                 echo mysqli_num_rows($balita);
                             ?>, 
+                            // <?php 
+                            //     $dewasa = mysqli_query($connection,"select * from lap_penanganan where dewasa");
+                            //     echo mysqli_num_rows($dewasa);
+                            // ?>,
                             <?php 
-                                $dewasa = mysqli_query($connection,"select * from lap_bantuan where usia ='dewasa'");
-                                echo mysqli_num_rows($dewasa);
-                            ?>,
-                            <?php 
-                                $bumil = mysqli_query($connection,"select * from lap_bantuan where usia ='ibu hamil'");
+                                $bumil = mysqli_query($connection,"select sum(hamil) as ha from lap_penanganan");
                                 echo mysqli_num_rows($bumil);
                             ?>, 
                             <?php 
-                                $lansia = mysqli_query($connection,"select * from lap_bantuan where usia ='lansia'");
+                                $lansia = mysqli_query($connection,"select sum(lansia) as lan from lap_penanganan");
                                 echo mysqli_num_rows($lansia);
                             ?>, 
                             <?php 
-                                $disab = mysqli_query($connection,"select * from lap_bantuan where usia ='disabilitas'");
+                                $disab = mysqli_query($connection,"select sum(disabil) as dis from lap_penanganan");
                                 echo mysqli_num_rows($disab);
                             ?>,
                         ],
                         borderWidth: 1
-                    }        
+                    }         
                 ]
                     },
                 });
                 
-                </script> 
-
+                </script>
 
 
                 <!-- SCript mychart -->
