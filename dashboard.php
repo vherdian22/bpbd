@@ -195,7 +195,7 @@ $tampil = mysqli_fetch_assoc($data);
                 <div class="row ms-5 mb-5">
                     <div  class="col-sm-20 col-xl-10">
                     <center>
-                    <h1 class="mb-4 ">Golongan Terdampak</h1>
+                    <h2 class="mb-4 ">Golongan Rentan Yang Terdampak</h2>
                      </center>
                         <canvas id="pie"></canvas>
                     </div>
@@ -335,45 +335,52 @@ $tampil = mysqli_fetch_assoc($data);
                 });
                 
                 </script> 
-
-            
-            <?php
-            include 'connection.php';
-    
-            $a="SELECT * from lap_penanganan";
-            $b = mysqli_query($connection , $a);
-            while($c=$b->fetch_array())
- 
-            ?>              
+             
                 
                 <script>
                 const pie = document.getElementById('pie');
                 new Chart(pie, {
                     type: 'pie',
                     data: {
-                    labels: ["Balita","Dewasa","Ibu Hamil","Lansia","Disabilitas"],
+                    labels: ["Balita","Ibu Hamil","Lansia","Disabilitas"],
                     datasets: [{
                         label: 'golongan',
                         data: [
                             <?php 
-                                $balita = mysqli_query($connection,"select sum(balita) as ba from lap_penanganan");
-                                echo mysqli_num_rows($balita);
+                                $data = $connection -> query("SELECT * FROM lap_penanganan");
+                                $total = 0;
+                                while($tampil = $data->fetch_array()){
+                                    $total += $tampil['balita'];
+                                }
+                                echo ($total);
                             ?>, 
                             // <?php 
-                            //     $dewasa = mysqli_query($connection,"select * from lap_penanganan where dewasa");
+                            //     $dewasa = mysqli_query($connection,"select * from lap_penanganan ");
                             //     echo mysqli_num_rows($dewasa);
                             // ?>,
                             <?php 
-                                $bumil = mysqli_query($connection,"select sum(hamil) as ha from lap_penanganan");
-                                echo mysqli_num_rows($bumil);
+                                $data = $connection -> query("SELECT * FROM lap_penanganan");
+                                $total = 0;
+                                while($tampil = $data->fetch_array()){
+                                    $total += $tampil['hamil'];
+                                }
+                                echo ($total);
                             ?>, 
                             <?php 
-                                $lansia = mysqli_query($connection,"select sum(lansia) as lan from lap_penanganan");
-                                echo mysqli_num_rows($lansia);
+                                $data = $connection -> query("SELECT * FROM lap_penanganan");
+                                $total = 0;
+                                while($tampil = $data->fetch_array()){
+                                    $total += $tampil['lansia'];
+                                }
+                                echo ($total);
                             ?>, 
                             <?php 
-                                $disab = mysqli_query($connection,"select sum(disabil) as dis from lap_penanganan");
-                                echo mysqli_num_rows($disab);
+                                $data = $connection -> query("SELECT * FROM lap_penanganan");
+                                $total = 0;
+                                while($tampil = $data->fetch_array()){
+                                    $total += $tampil['disabil'];
+                                }
+                                echo ($total);
                             ?>,
                         ],
                         borderWidth: 1
@@ -384,7 +391,7 @@ $tampil = mysqli_fetch_assoc($data);
                 
                 </script>
 
-
+                            
                 <!-- SCript mychart -->
 
 
